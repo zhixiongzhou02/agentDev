@@ -1,0 +1,55 @@
+# 文档地图
+
+## 目的
+
+这份文档定义仓库中有哪些正式文档、它们放在哪里、谁可以创建它们，以及 Agent 在什么场景下应该加载它们。
+
+如果某份正式文档没有出现在这里，那么在它通过已批准的计划或决策纳入之前，应视为未受管控文档。
+
+## 权威级别
+
+- `source`：项目中的权威事实来源
+- `derived`：从权威文档派生出的执行或设计细节
+- `working`：临时工作材料，后续必须被提升或删除
+
+## 文档清单
+
+| Path | Type | Authority | Creation Rule | Load When |
+| --- | --- | --- | --- | --- |
+| `README.md` | 仓库入口 | source | 根文档，结构有重大变化时必须维护 | 初次进入仓库时总是先读 |
+| `docs/ai-agent-development-playbook.md` | 方法论参考 | source | 项目的种子文档 | 调整治理模型时加载 |
+| `docs/00-meta/doc-map.md` | 治理地图 | source | 任何正式仓库都必须具备 | 进入更深层文档前加载 |
+| `docs/00-meta/conventions.md` | 仓库约定 | source | 在文档规模扩展前必须建立 | 命名、链接、创建文档时加载 |
+| `docs/00-meta/workflow.md` | 交付流程 | source | 开始实现前必须建立 | 规划或实现前加载 |
+| `docs/01-product/vision.md` | 产品愿景 | source | 细化需求前必须建立 | 评估范围和取舍时加载 |
+| `docs/04-delivery/plans/PLAN-001-project-foundation.md` | 当前基础计划 | source | 仓库初始化的第一份计划 | 创建新的受管控文档前加载 |
+| `docs/05-quality/test-strategy.md` | 质量策略 | source | 设计测试前必须建立 | 定义验证范围时加载 |
+| `docs/05-quality/traceability.md` | 追溯规则 | source | 编写测试或实现前必须建立 | 连接需求、设计、测试和代码时加载 |
+| `.ai/loading-rules.md` | AI 运行时加载规则 | source | 受控上下文加载必须具备 | 执行任务前加载 |
+| `.ai/context-budgets.md` | AI 运行时上下文预算 | derived | 由流程和加载规则派生 | 估算任务上下文范围时加载 |
+| `.ai/doc-allowlist.md` | AI 运行时文档白名单 | derived | 由文档地图派生 | 判断哪些文档可进入上下文时加载 |
+| `.ai/task-routing.md` | AI 运行时任务路由 | derived | 由流程和文档地图派生 | 根据任务路由文档时加载 |
+
+## 创建策略
+
+- 新的 `source` 文档必须依附于一个活动中的 `PLAN-*` 或已批准的 `ADR-*`。
+- 新的 `derived` 文档必须明确引用其来源文档。
+- `working` 文档必须放在 `specs/` 这类明确的临时区域，并且要能从活动计划中找到链接。
+
+## 当前活动文档
+
+当前最小可运行文档集合是：
+
+- `README.md`
+- `docs/00-meta/doc-map.md`
+- `docs/00-meta/conventions.md`
+- `docs/00-meta/workflow.md`
+- `docs/01-product/vision.md`
+- `docs/04-delivery/plans/PLAN-001-project-foundation.md`
+- `docs/05-quality/test-strategy.md`
+- `docs/05-quality/traceability.md`
+- `.ai/loading-rules.md`
+
+## 维护规则
+
+凡是涉及仓库结构、文档类型或权威规则的变更，都必须在同一个变更中同步更新这份文档地图。
