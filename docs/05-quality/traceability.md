@@ -34,6 +34,17 @@
 - governance source: `docs/00-meta/workflow.md`
 - methodology source: `docs/ai-agent-development-playbook.md`
 
+## 当前活动实现链路
+
+- plan ID: `PLAN-002`
+- requirement ID: `FR-001`
+- spec path: `specs/repository-bootstrap-kit/spec.md`
+- design path: `specs/repository-bootstrap-kit/design.md`
+- test plan path: `specs/repository-bootstrap-kit/test-plan.md`
+- implementation path: `scripts/bootstrap_repo.sh`
+- template path: `templates/repo-foundation/`
+- verification status: `verified`
+
 ## 后续要求
 
-当功能开发真正开始后，应补充功能级 ID 和明确的验证记录，而不是只依赖说明性文字。
+当实现真正开始后，应继续补充测试用例 ID、实现模块路径和验证结果，而不是只停留在计划层追溯。

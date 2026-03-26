@@ -2,6 +2,16 @@
 
 一个用于展示 AI Agent 项目如何“先治理、后实现”的示例仓库。
 
+## 快速导航
+
+- [项目定位](#overview)
+- [适合谁](#audience)
+- [仓库导航](#repo-guide)
+- [当前状态](#current-state)
+- [开发手册正文](#playbook)
+
+<a id="overview"></a>
+
 它关注的不是某个模型、框架或单一功能，而是更底层的问题：
 
 - 如何控制上下文加载，避免 token 被无意义消耗
@@ -10,6 +20,8 @@
 - 如何让人和 Agent 遵守同一套仓库工作流
 
 仓库当前刻意采用“先治理、后实现”的方式启动。为了让 GitHub 首页能直接展示核心方法，本页除了入口说明，也同步展示 `docs/ai-agent-development-playbook.md` 的核心内容。
+
+<a id="audience"></a>
 
 ## 这个仓库适合谁
 
@@ -23,7 +35,9 @@
 - 一份可直接在 GitHub 首页阅读的 AI Agent 开发手册
 - 一套最小但完整的仓库治理骨架
 - 文档地图、工作流、质量追溯和 AI 加载规则
-- 一个从 `PLAN-001` 起步、可继续扩展的示例结构
+- 一个从 `PLAN-001` 演进到 `PLAN-002`，再落到脚本和模板的示例结构
+
+<a id="repo-guide"></a>
 
 ## 仓库导航
 
@@ -31,7 +45,12 @@
 - 方法论文档原文：`docs/ai-agent-development-playbook.md`
 - 文档治理入口：`docs/00-meta/doc-map.md`
 - 交付流程规则：`docs/00-meta/workflow.md`
-- 当前活动计划：`docs/04-delivery/plans/PLAN-001-project-foundation.md`
+- 当前基础计划：`docs/04-delivery/plans/PLAN-001-project-foundation.md`
+- 当前能力计划：`docs/04-delivery/plans/PLAN-002-repository-bootstrap-kit.md`
+- 当前功能需求：`docs/01-product/requirements/FR-001-repository-bootstrap-kit.md`
+- 当前特性设计：`specs/repository-bootstrap-kit/design.md`
+- 启动脚本实现：`scripts/bootstrap_repo.sh`
+- 启动模板目录：`templates/repo-foundation/`
 - AI 上下文规则：`.ai/loading-rules.md`
 
 ## 从这里开始
@@ -42,7 +61,12 @@
 2. `docs/00-meta/doc-map.md`
 3. `.ai/loading-rules.md`
 4. `docs/04-delivery/plans/PLAN-001-project-foundation.md`
-5. `docs/ai-agent-development-playbook.md`
+5. `docs/04-delivery/plans/PLAN-002-repository-bootstrap-kit.md`
+6. `docs/01-product/requirements/FR-001-repository-bootstrap-kit.md`
+7. `specs/repository-bootstrap-kit/design.md`
+8. `docs/ai-agent-development-playbook.md`
+
+<a id="current-state"></a>
 
 ## 当前状态
 
@@ -56,6 +80,27 @@
 - TDD 策略与追溯规则
 - AI 上下文加载控制
 
+并且已经启动第一个真正面向实现的能力规划：
+
+- `PLAN-002`：把当前治理骨架沉淀成可复用的仓库启动包，并已完成首版实现
+- `FR-001`：定义启动包必须提供的初始化能力
+- `specs/repository-bootstrap-kit/*`：定义该能力的规格、设计和测试计划
+- `scripts/bootstrap_repo.sh`：根据模板生成新仓库骨架
+- `templates/repo-foundation/`：保存首版基础模板
+
+## 快速试用
+
+可以直接运行：
+
+```bash
+./scripts/bootstrap_repo.sh \
+  --name "demoAgent" \
+  --description "一个新的 AI Agent 项目" \
+  --target /tmp/demoAgent
+```
+
+生成完成后，目标目录会包含最小治理骨架和基础文档。
+
 ## 当前重点
 
 - 控制上下文加载范围，降低 token 消耗
@@ -63,6 +108,7 @@
 - 建立文档地图，而不是让文档自由膨胀
 - 实现前必须先有计划
 - 用需求-设计-测试追溯链约束 TDD
+- 用真实脚本和模板验证这套仓库方法是否可落地
 
 ## 当前原则
 
@@ -79,6 +125,8 @@
 - 如果两处内容需要一起更新，应优先更新 playbook，再同步本页镜像。
 
 ---
+
+<a id="playbook"></a>
 
 # AI Agent 开发手册
 
